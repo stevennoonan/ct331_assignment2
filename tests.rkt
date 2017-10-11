@@ -1,6 +1,7 @@
 #lang racket
 
-(require (file "assignment.rkt"))
+(require (file "assignment_q2.rkt")
+         (file "assignment_q3.rkt"))
 
 ;
 ;Don't worry about this file unless you are doing the extra credit tests. 

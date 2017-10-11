@@ -15,6 +15,3 @@
 
 (define (ins_beg el lst)
   (display "Hello, I'm ins_beg!\n"))
-
-
-
