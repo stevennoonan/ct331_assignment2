@@ -27,4 +27,15 @@
 (define (helper_citr item lst count)(cond[(null? lst) count]
                                          [(equal? item (car lst)) (helper_citr item (cdr lst) (+ 1 count))]
                                          [else (helper_citr item (cdr lst) count)]))
+
+;Count number of times an item occurs in a list of items where the list also has sublists
+(provide count_instances_deep)
+(define (count_instances_deep item lst)
+  (cond [(null? lst) 0]
+        [(list? (car lst))
+         (+ (count_instances_deep item (car lst)) (count_instances_deep item (cdr lst)))]
+        [(equal? item (car lst)) (+ 1 (count_instances_deep item (cdr lst)))]
+        [else (count_instances_deep item (cdr lst))]))
+
+
                                          
