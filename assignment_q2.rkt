@@ -18,3 +18,13 @@
   (cond [(null? lst) 0]
         [(equal? item (car lst)) (+ 1 (count_instances item (cdr lst)))]
         [else (count_instances item (cdr lst))]))
+
+;tail recursion version of previous function
+;requires a helper function to prevent multiple activations of the function
+(provide count_instances_tr)
+(define (count_instances_tr item lst) (helper_citr item lst 0))
+
+(define (helper_citr item lst count)(cond[(null? lst) count]
+                                         [(equal? item (car lst)) (helper_citr item (cdr lst) (+ 1 count))]
+                                         [else (helper_citr item (cdr lst) count)]))
+                                         
