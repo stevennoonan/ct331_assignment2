@@ -1,17 +1,20 @@
 #lang racket
 
-;This is an example implementation of ins_beg,
-;It obviously doesn't do what it should, so you
-;can edit this function to get started.
-;
-;Please note the provide function is necessary
-;for the unit tests to work. Please include a
-;(provide) for each function you write in your
-;submitted assignment.
-;
-;You may delete these comments!
-
+;inserting element at beginning of list
 (provide ins_beg)
+(define (ins_beg el lst) (append (list el) lst))
 
-(define (ins_beg el lst)
-  (display "Hello, I'm ins_beg!\n"))
+;inserting element at end of list
+(provide ins_end)
+(define (ins_end el lst) (append lst (list el)))
+
+;counting num of top level items in a list
+(provide cout_top_level)
+(define (cout_top_level lst) (if( null? lst) 0 (+ 1 (cout_top_level (cdr lst)))))
+
+;counting number of timesan item occurs in a list of items (non-tail)
+(provide count_instances)
+(define (count_instances item lst)
+  (cond [(null? lst) 0]
+        [(equal? item (car lst)) (+ 1 (count_instances item (cdr lst)))]
+        [else (count_instances item (cdr lst))]))
