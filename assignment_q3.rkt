@@ -15,7 +15,7 @@
 (display "Sorted Tree\n") 
 (sort_tree tree)
 
-;part 2
+;part b
 ;if item is present or absent
 (define (ispresent item tree)
   (cond [(null? tree) #f] ;false if tree is empty
@@ -25,7 +25,7 @@
 ;testing ispresent method
 (display "Searching for item in tree, should return #t\n")
 (ispresent 6 tree)
-(display "Searchig for item not in tree, should return #f\n")
+(display "Searching for item not in tree, should return #f\n")
 (ispresent 22 tree)
 
 ;part c
@@ -53,6 +53,20 @@
 (display "Inserting a list into existing tree\n Inserting list (1 2)\n")
 (list2tree '(1 2 ) tree)
 
+;part e
+;take a list of items and display them in sorted order
+(define (sort_list list)
+  (sort_tree(list2tree list '()))) ;using original tree sort algorithm and passing the list to an empty tree.
+
+;testing part e
+(display "Sorting a list\n")
+(sort_list '(10 3 5 1 16 66 54 32 2))
+
+
+;part f
+;implementing a higher order version of sort_tree
+;takes a list and a function and sorts list in ascending, descending and based on last digit
+(define (higher_order_tree_sort list order_fn)(sort_tree(list2tree list '())))
 
 
 
