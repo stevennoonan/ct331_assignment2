@@ -33,7 +33,7 @@
 (define (insert item tree)
   (cond [(null? tree) (list '() item '())] ;if the tree is empty, add the item as the root node
         [(equal? item (cadr tree)) tree]   ;if item = current node, return as item is found
-        [(< item (cadr tree)) (list (insert item (car tree))(cadr tree) (caddr tree))] ;if item < current node, recurse on left sub tree
+        [(< item (cadr tree)) (list (insert item(car tree))(cadr tree) (caddr tree))] ;if item < current node, recurse on left sub tree
         [(> item (cadr tree)) (list (car tree) (cadr tree) (insert item(caddr tree)))]));if item > current node, recurse on right sub tree
 
 ;testing inserting function
@@ -41,3 +41,24 @@
 (insert 2 '())
 (display "Inserting into existing tree\n")
 (insert 2 tree)
+
+
+;part d
+;take a list of numbers and insert into binary tree
+(define (list2tree list tree)
+  (if (empty? list) tree
+      (list2tree (cdr list) (insert (car list) tree))))
+
+;testing list2tree
+(display "Inserting a list into existing tree\n Inserting list (1 2)\n")
+(list2tree '(1 2 ) tree)
+
+
+
+
+
+
+
+
+
+
