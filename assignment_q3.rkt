@@ -27,3 +27,17 @@
 (ispresent 6 tree)
 (display "Searchig for item not in tree, should return #f\n")
 (ispresent 22 tree)
+
+;part c
+;inserting item into tree
+(define (insert item tree)
+  (cond [(null? tree) (list '() item '())] ;if the tree is empty, add the item as the root node
+        [(equal? item (cadr tree)) tree]   ;if item = current node, return as item is found
+        [(< item (cadr tree)) (list (insert item (car tree))(cadr tree) (caddr tree))] ;if item < current node, recurse on left sub tree
+        [(> item (cadr tree)) (list (car tree) (cadr tree) (insert item(caddr tree)))]));if item > current node, recurse on right sub tree
+
+;testing inserting function
+(display "Inserting into empty tree\n")
+(insert 2 '())
+(display "Inserting into existing tree\n")
+(insert 2 tree)
