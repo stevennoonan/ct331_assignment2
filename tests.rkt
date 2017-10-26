@@ -24,10 +24,14 @@
     (printf "4: ~a~n" (test_count_instances2))
     (printf "5: ~a~n" (test_count_instances_tr1))
     (printf "5: ~a~n" (test_count_instances_tr2))
+    (printf "6: ~a~n" (test_count_instances_deep1))
+    (printf "6: ~a~n" (test_count_instances_deep2))
     ;end calling test functions
     (display "\nTests complete!\n")))
 
 ;Begin test functions
+
+;Question 2 tests
 ;true test
 (define (test_ins_beg1)(equal? '(a b c d) (ins_beg 'a '(b c d))))
 ;false test
@@ -52,6 +56,11 @@
 (define (test_count_instances_tr1) (equal? 5 (count_instances_tr 'a '(a a a b b c c d a a))))
 ;false test
 (define (test_count_instances_tr2) (equal? 15 (count_instances_tr 'a '(a a a b b c c d a a))))
+
+;true test
+(define (test_count_instances_deep1) (equal? 3 (count_instances_deep 'a '(a a '(a b c)))))
+;false test
+(define (test_count_instances_deep2) (equal? 5 (count_instances_deep 'a '(a a '(a b c)))))
 
 
 ;End test functions
